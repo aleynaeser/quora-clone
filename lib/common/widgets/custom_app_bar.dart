@@ -1,26 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:quora_clone_app/common/models/theme_model.dart';
+
+import '../constants/size_constants.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({Key? key}) : super(key: key);
+  final String title;
+  const CustomAppBar({Key? key, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.black,
+      backgroundColor: context.themeColors.themeColor2,
       elevation: 0,
-      leading: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: CircleAvatar(
-          backgroundColor: Colors.orange,
-          child: Text(
-            'A',
-            style: TextStyle(color: Colors.white),
-          ), // Placeholder avatar
-        ),
+      toolbarHeight: 80,
+      leading: CircleAvatar(
+        backgroundImage: const AssetImage('assets/images/avatar.png'),
+        backgroundColor: Colors.transparent,
       ),
-      title: const Text(
-        'Home',
-        style: TextStyle(
+      title: Text(
+        title,
+        style: const TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.bold,
           fontSize: 22,

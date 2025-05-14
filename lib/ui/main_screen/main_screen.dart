@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../common/widgets/custom_app_bar.dart';
+
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
@@ -10,6 +12,9 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: CustomAppBar(title: 'Home'),
+      body: Column(children: [Text('Home')]),
+    );
   }
 }

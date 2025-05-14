@@ -1,6 +1,5 @@
 import '../models/theme_model.dart';
 import 'package:flutter/material.dart';
-import '../constants/size_constants.dart';
 import '../constants/theme_constants.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -10,28 +9,7 @@ class ThemeConfig {
 
     return baseTheme.copyWith(
       scaffoldBackgroundColor: themeColors.themeColor1,
-      textTheme: GoogleFonts.poppinsTextTheme(baseTheme.textTheme),
-      floatingActionButtonTheme: FloatingActionButtonThemeData(
-        elevation: 6,
-        backgroundColor: themeColors.themeColor2,
-        foregroundColor: themeColors.themeColor3,
-        sizeConstraints: const BoxConstraints(minWidth: 46, minHeight: 46),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(Sizes.buttonRadius),
-        ),
-      ),
-      elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
-          elevation: 4,
-          backgroundColor: themeColors.themeColor2,
-          foregroundColor: themeColors.themeColor3,
-          minimumSize: const Size(Sizes.buttonWidth, Sizes.buttonHeight),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(Sizes.buttonRadius),
-          ),
-        ),
-      ),
-      // colorScheme: colorScheme.copyWith(),
+      textTheme: GoogleFonts.robotoTextTheme(baseTheme.textTheme),
       extensions: [
         CustomThemeModel(
           themeColor1: themeColors.themeColor1,

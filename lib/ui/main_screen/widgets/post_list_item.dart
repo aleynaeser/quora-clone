@@ -38,7 +38,7 @@ class _PostListItemState extends State<PostListItem> {
       children: [
         Container(
           color: context.themeColors.themeColor2,
-          padding: const EdgeInsets.only(top: Sizes.mediumPadding),
+          padding: const EdgeInsets.only(top: Sizes.smallPadding),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -315,7 +315,7 @@ class _PostListItemState extends State<PostListItem> {
             ],
           ),
         ),
-        SizedBox(height: Sizes.smallPadding),
+        SizedBox(height: 6),
       ],
     );
   }

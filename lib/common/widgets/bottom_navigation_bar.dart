@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import '../constants/theme_constants.dart';
 import '../constants/size_constants.dart';
+import '../constants/theme_constants.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quora_clone_app/common/models/theme_model.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
@@ -10,11 +10,11 @@ class CustomBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final items = [
-      _NavBarItem(icon: 'home.svg', label: 'Home'),
-      _NavBarItem(icon: 'following.svg', label: 'Following'),
-      _NavBarItem(icon: 'spaces.svg', label: 'Spaces'),
-      _NavBarItem(icon: 'notification.svg', label: 'Notifications'),
-      _NavBarItem(icon: 'more.svg', label: 'More'),
+      'home.svg',
+      'following.svg',
+      'share.svg',
+      'spaces.svg',
+      'notification.svg',
     ];
 
     return Container(
@@ -32,34 +32,16 @@ class CustomBottomNavigationBar extends StatelessWidget {
           return Expanded(
             child: InkWell(
               onTap: () {},
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SvgPicture.asset(
-                    'assets/icons/${item.icon}',
-                    width: 24,
-                    height: 24,
-                    colorFilter: ColorFilter.mode(
-                      isSelected
-                          ? context.themeColors.themeColor3
-                          : context.themeColors.themeColor6,
-                      BlendMode.srcIn,
-                    ),
-                  ),
-                  const SizedBox(height: 2),
-                  Text(
-                    item.label,
-                    style: TextStyle(
-                      color:
-                          isSelected
-                              ? context.themeColors.themeColor3
-                              : context.themeColors.themeColor6,
-                      fontSize: Sizes.smallTextSize,
-                      fontWeight:
-                          isSelected ? FontWeight.bold : FontWeight.normal,
-                    ),
-                  ),
-                ],
+              child: SvgPicture.asset(
+                'assets/icons/$item',
+                width: Sizes.largeIconSize,
+                height: Sizes.largeIconSize,
+                colorFilter: ColorFilter.mode(
+                  isSelected
+                      ? context.themeColors.themeColor3
+                      : context.themeColors.themeColor6,
+                  BlendMode.srcIn,
+                ),
               ),
             ),
           );
@@ -67,10 +49,4 @@ class CustomBottomNavigationBar extends StatelessWidget {
       ),
     );
   }
-}
-
-class _NavBarItem {
-  final String icon;
-  final String label;
-  _NavBarItem({required this.icon, required this.label});
 }

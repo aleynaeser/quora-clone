@@ -33,7 +33,7 @@ class MainScreen extends StatelessWidget {
                 slivers: [
                   const SliverToBoxAdapter(child: QuestionBox()),
                   SliverPadding(
-                    padding: const EdgeInsets.only(top: Sizes.smallPadding),
+                    padding: const EdgeInsets.only(top: 6),
                     sliver: PostList(state: state),
                   ),
                 ],

@@ -10,4 +10,6 @@ class BaseInfo {
   static const String newsApiCountry = "us";
   static const String newsApiLanguage = "en";
   static const String newsApiCategory = "technology";
+
+  static const String avatarUrl = "https://avatar.iran.liara.run/public";
 }

@@ -5,6 +5,7 @@ import '../../core/posts/bloc/post_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../common/widgets/custom_app_bar.dart';
 import '../../common/constants/size_constants.dart';
+import '../../common/widgets/bottom_navigation_bar.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -13,6 +14,7 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(title: 'Home'),
+      bottomNavigationBar: CustomBottomNavigationBar(),
       body: BlocProvider(
         create: (context) => PostBloc()..add(PostFetched()),
         child: BlocBuilder<PostBloc, PostState>(
@@ -31,7 +33,7 @@ class MainScreen extends StatelessWidget {
                 slivers: [
                   const SliverToBoxAdapter(child: QuestionBox()),
                   SliverPadding(
-                    padding: const EdgeInsets.only(top: Sizes.mediumPadding),
+                    padding: const EdgeInsets.only(top: Sizes.smallPadding),
                     sliver: PostList(state: state),
                   ),
                 ],

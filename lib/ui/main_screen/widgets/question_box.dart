@@ -10,20 +10,32 @@ class QuestionBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: context.themeColors.themeColor2,
-      padding: const EdgeInsets.all(Sizes.mediumPadding),
+      padding: const EdgeInsets.only(
+        left: Sizes.mediumPadding,
+        right: Sizes.mediumPadding,
+        top: Sizes.smallPadding,
+        bottom: 6.0,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
-              CircleAvatar(
-                radius: 20,
-                backgroundImage: AssetImage('assets/images/avatar.png'),
+              Container(
+                width: 35,
+                height: 35,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/avatar.png'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
-              const SizedBox(width: Sizes.mediumPadding),
+              const SizedBox(width: Sizes.smallPadding),
               Expanded(
                 child: SizedBox(
-                  height: 32,
+                  height: 26,
                   child: OutlinedButton(
                     onPressed: () {},
                     style: OutlinedButton.styleFrom(
@@ -55,7 +67,7 @@ class QuestionBox extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: Sizes.smallPadding),
+          const SizedBox(height: 6.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -103,12 +115,13 @@ class _QuestionBoxButtonState extends State<_QuestionBoxButton> {
               width: Sizes.mediumIconSize,
               height: Sizes.mediumIconSize,
             ),
-            const SizedBox(width: 4),
+            const SizedBox(width: 6),
             Text(
               widget.label,
               style: TextStyle(
-                color: context.themeColors.themeColor6,
+                fontWeight: FontWeight.w500,
                 fontSize: Sizes.smallTextSize,
+                color: context.themeColors.themeColor6,
               ),
             ),
           ],
@@ -124,8 +137,8 @@ class _VerticalDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 24,
       width: 1,
+      height: 24,
       color: context.themeColors.themeColor8,
       margin: const EdgeInsets.symmetric(horizontal: 8),
     );

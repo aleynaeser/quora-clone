@@ -3,7 +3,6 @@ import '../constants/size_constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quora_clone_app/common/models/theme_model.dart';
 
-
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   const CustomAppBar({Key? key, required this.title}) : super(key: key);
@@ -13,7 +12,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       elevation: 0,
       scrolledUnderElevation: 0,
-      toolbarHeight: 65,
+      toolbarHeight: 55,
       leadingWidth: 55,
       backgroundColor: context.themeColors.themeColor1,
       bottom: PreferredSize(
@@ -39,20 +38,17 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       actions: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: Sizes.smallPadding),
-          child: IconButton(
-            icon: SvgPicture.asset(
-              "assets/icons/search.svg",
-              colorFilter: ColorFilter.mode(
-                context.themeColors.themeColor6,
-                BlendMode.srcIn,
-              ),
-              width: Sizes.mediumIconSize,
-              height: Sizes.mediumIconSize,
+        IconButton(
+          icon: SvgPicture.asset(
+            "assets/icons/search.svg",
+            colorFilter: ColorFilter.mode(
+              context.themeColors.themeColor6,
+              BlendMode.srcIn,
             ),
-            onPressed: () {},
+            width: Sizes.mediumIconSize,
+            height: Sizes.mediumIconSize,
           ),
+          onPressed: () {},
         ),
         Padding(
           padding: const EdgeInsets.only(
@@ -77,5 +73,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(65);
+  Size get preferredSize => const Size.fromHeight(55);
 }

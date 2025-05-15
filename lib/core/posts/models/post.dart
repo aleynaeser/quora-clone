@@ -1,5 +1,6 @@
-import 'package:equatable/equatable.dart';
 import 'dart:math';
+import 'package:equatable/equatable.dart';
+import '../../../common/constants/base_constants.dart';
 
 final class PostResponse extends Equatable {
   final String status;
@@ -38,8 +39,8 @@ final class Post {
 
   static String _getRandomAvatarUrl() {
     final random = Random();
-    final id = random.nextInt(1000) + 1; // 1 to 1000
-    return 'https://picsum.photos/seed/$id/200';
+    final id = random.nextInt(100) + 1; // 1 to 100
+    return '${BaseInfo.avatarUrl}/$id';
   }
 
   const Post({

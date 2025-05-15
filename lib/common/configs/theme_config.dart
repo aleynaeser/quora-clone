@@ -22,6 +22,7 @@ class ThemeConfig {
           themeColor7: themeColors.themeColor7,
           themeColor8: themeColors.themeColor8,
           themeColor9: themeColors.themeColor9,
+          themeColor10: themeColors.themeColor10,
         ),
       ],
     );

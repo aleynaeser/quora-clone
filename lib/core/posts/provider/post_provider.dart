@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:typed_data';
 import '../../../common/constants/base_constants.dart';
 import '../models/post.dart';
 import 'package:http/http.dart' as http;
@@ -28,6 +29,25 @@ class PostProvider {
       return postResponse;
     }
 
-    throw Exception('error fetching posts');
+    throw Exception('Error fetching posts...');
+  }
+
+  Future<Uint8List?> loadImage(String? urlToImage) async {
+    if (urlToImage == null) return null;
+
+    try {
+      final proxyUrl =
+          'https://images.weserv.nl/?url=${Uri.encodeComponent(urlToImage)}';
+
+      final response = await http.get(Uri.parse(proxyUrl));
+
+      if (response.statusCode == 200) {
+        return response.bodyBytes;
+      }
+
+      throw Exception('Error fetching image...');
+    } catch (e) {
+      return null;
+    }
   }
 }

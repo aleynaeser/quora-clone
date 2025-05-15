@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import '../../core/posts/bloc/post_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../common/widgets/custom_app_bar.dart';
-import '../../common/constants/size_constants.dart';
 import '../../common/widgets/bottom_navigation_bar.dart';
 
 class MainScreen extends StatelessWidget {
@@ -25,6 +24,7 @@ class MainScreen extends StatelessWidget {
                   if (scrollInfo.metrics.pixels >=
                       scrollInfo.metrics.maxScrollExtent * 0.9) {
                     context.read<PostBloc>().add(PostFetched());
+                    print('scrolled');
                   }
                 }
                 return true;

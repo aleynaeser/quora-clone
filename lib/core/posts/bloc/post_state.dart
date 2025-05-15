@@ -6,7 +6,7 @@ final class PostState extends Equatable {
   const PostState({
     this.hasReachedMax = false,
     this.status = PostStatus.initial,
-    this.currentPage = 0,
+    this.currentPage = 1,
     this.response = const PostResponse(
       status: '',
       totalResults: 0,

@@ -19,15 +19,27 @@ class PostListItem extends StatefulWidget {
 class _PostListItemState extends State<PostListItem> {
   Uint8List? _imageBytes;
   final PostRepository _postRepository = PostRepository();
+  bool _mounted = true;
 
   @override
   void initState() {
     super.initState();
-    _postRepository.loadImage(widget.post.urlToImage).then((value) {
+    _loadImage();
+  }
+
+  @override
+  void dispose() {
+    _mounted = false;
+    super.dispose();
+  }
+
+  Future<void> _loadImage() async {
+    final imageBytes = await _postRepository.loadImage(widget.post.urlToImage);
+    if (_mounted) {
       setState(() {
-        _imageBytes = value;
+        _imageBytes = imageBytes;
       });
-    });
+    }
   }
 
   @override

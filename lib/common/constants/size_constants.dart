@@ -1,7 +1,7 @@
 class Sizes {
   // Padding
   static const double smallPadding = 10.0;
-  static const double mediumPadding = 16.0;
+  static const double mediumPadding = 14.0;
   static const double largePadding = 24.0;
 
   // SizedBox

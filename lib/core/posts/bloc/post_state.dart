@@ -4,32 +4,40 @@ enum PostStatus { initial, success, failure }
 
 final class PostState extends Equatable {
   const PostState({
-    this.status = PostStatus.initial,
-    this.posts = const <Post>[],
     this.hasReachedMax = false,
+    this.status = PostStatus.initial,
+    this.currentPage = 0,
+    this.response = const PostResponse(
+      status: '',
+      totalResults: 0,
+      articles: [],
+    ),
   });
 
   final PostStatus status;
-  final List<Post> posts;
   final bool hasReachedMax;
+  final int currentPage;
+  final PostResponse response;
 
   PostState copyWith({
     PostStatus? status,
-    List<Post>? posts,
+    PostResponse? response,
     bool? hasReachedMax,
+    int? currentPage,
   }) {
     return PostState(
       status: status ?? this.status,
-      posts: posts ?? this.posts,
+      response: response ?? this.response,
       hasReachedMax: hasReachedMax ?? this.hasReachedMax,
+      currentPage: currentPage ?? this.currentPage,
     );
   }
 
   @override
   String toString() {
-    return '''PostState { status: $status, hasReachedMax: $hasReachedMax, posts: ${posts.length} }''';
+    return '''PostState { status: $status, hasReachedMax: $hasReachedMax, currentPage: $currentPage, response: ${response.articles.length} }''';
   }
 
   @override
-  List<Object> get props => [status, posts, hasReachedMax];
+  List<Object> get props => [status, response, hasReachedMax, currentPage];
 }

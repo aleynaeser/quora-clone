@@ -21,9 +21,7 @@ EventTransformer<E> throttleDroppable<E>(Duration duration) {
 class PostBloc extends Bloc<PostEvent, PostState> {
   final PostRepository _postRepository;
 
-  PostBloc()
-    : _postRepository = PostRepository(),
-      super(const PostState()) {
+  PostBloc() : _postRepository = PostRepository(), super(const PostState()) {
     on<PostFetched>(
       _onFetched,
       transformer: throttleDroppable(throttleDuration),
@@ -35,20 +33,26 @@ class PostBloc extends Bloc<PostEvent, PostState> {
 
     try {
       final posts = await _postRepository.fetchPosts(
-        startIndex: state.posts.length,
+        startIndex: state.currentPage,
       );
 
-      if (posts.isEmpty) {
+      if (posts.articles.isEmpty ||
+          posts.articles.length >= posts.totalResults) {
         return emit(state.copyWith(hasReachedMax: true));
       }
 
       emit(
         state.copyWith(
           status: PostStatus.success,
-          posts: [...state.posts, ...posts],
+          currentPage: state.currentPage + 1,
+          response: PostResponse(
+            status: posts.status,
+            totalResults: posts.totalResults,
+            articles: [...state.response.articles, ...posts.articles],
+          ),
         ),
       );
-    } catch (_) {
+    } catch (error) {
       emit(state.copyWith(status: PostStatus.failure));
     }
   }

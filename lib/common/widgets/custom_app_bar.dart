@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:quora_clone_app/common/models/theme_model.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
 import '../constants/size_constants.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:quora_clone_app/common/models/theme_model.dart';
+
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -12,15 +12,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 0,
-      toolbarHeight: 60,
+      scrolledUnderElevation: 0,
+      toolbarHeight: 65,
       leadingWidth: 55,
       backgroundColor: context.themeColors.themeColor1,
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(1),
-        child: Container(
-          color: context.themeColors.themeColor8,
-          height: 1,
-        ),
+        child: Container(color: context.themeColors.themeColor8, height: 1),
       ),
       leading: Padding(
         padding: const EdgeInsets.only(
@@ -79,5 +77,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(65);
 }

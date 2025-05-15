@@ -4,13 +4,13 @@ import '../../../common/constants/size_constants.dart';
 import 'package:quora_clone_app/common/models/theme_model.dart';
 
 class QuestionBox extends StatelessWidget {
-  const QuestionBox({Key? key}) : super(key: key);
+  const QuestionBox({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: context.themeColors.themeColor2,
-      padding: const EdgeInsets.all(Sizes.smallPadding),
+      padding: const EdgeInsets.all(Sizes.mediumPadding),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

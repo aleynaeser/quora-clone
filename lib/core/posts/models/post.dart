@@ -1,37 +1,63 @@
 import 'package:equatable/equatable.dart';
+import 'dart:math';
 
-class PostSource {
-  final String id;
-  final String name;
+final class PostResponse extends Equatable {
+  final String status;
+  final int totalResults;
+  final List<Post> articles;
 
-  PostSource({required this.id, required this.name});
+  const PostResponse({
+    required this.status,
+    required this.totalResults,
+    required this.articles,
+  });
+
+  factory PostResponse.fromJson(Map<String, dynamic> json) => PostResponse(
+    status: json['status'],
+    totalResults: json['totalResults'],
+    articles:
+        (json['articles'] as List)
+            .map((article) => Post.fromJson(article))
+            .toList(),
+  );
+
+  @override
+  List<Object> get props => [status, totalResults, articles];
 }
 
-final class Post extends Equatable {
+final class Post {
   final PostSource source;
-  final String author;
+  final String? author;
+  final String authorImage;
   final String title;
-  final String description;
+  final String? description;
   final String url;
-  final String urlToImage;
+  final String? urlToImage;
   final String publishedAt;
-  final String content;
+  final String? content;
+
+  static String _getRandomAvatarUrl() {
+    final random = Random();
+    final id = random.nextInt(1000) + 1; // 1 to 1000
+    return 'https://picsum.photos/seed/$id/200';
+  }
 
   const Post({
     required this.source,
-    required this.author,
+    this.author,
+    required this.authorImage,
     required this.title,
-    required this.description,
+    this.description,
     required this.url,
-    required this.urlToImage,
+    this.urlToImage,
     required this.publishedAt,
-    required this.content,
+    this.content,
   });
 
-  @override
-  List<Object> get props => [
+  List<Object?> get props => [
     source,
     author,
+    authorImage,
     title,
     description,
     url,
@@ -41,13 +67,24 @@ final class Post extends Equatable {
   ];
 
   factory Post.fromJson(Map<String, dynamic> json) => Post(
-    source: PostSource(id: json['source']['id'], name: json['source']['name']),
-    author: json['author'],
-    title: json['title'],
-    description: json['description'],
-    url: json['url'],
-    urlToImage: json['urlToImage'],
-    publishedAt: json['publishedAt'],
-    content: json['content'],
+    source: PostSource(
+      id: json['source']['id'] ?? '',
+      name: json['source']['name'] ?? '',
+    ),
+    author: json['author'] ?? '',
+    authorImage: _getRandomAvatarUrl(),
+    title: json['title'] ?? '',
+    description: json['description'] ?? '',
+    url: json['url'] ?? '',
+    urlToImage: json['urlToImage'] ?? '',
+    publishedAt: json['publishedAt'] ?? '',
+    content: json['content'] ?? '',
   );
+}
+
+final class PostSource {
+  final String id;
+  final String name;
+
+  PostSource({required this.id, required this.name});
 }

@@ -1,22 +1,28 @@
 class Sizes {
   // Padding
-  static const double padding = 16.0;
+  static const double smallPadding = 10.0;
+  static const double mediumPadding = 16.0;
+  static const double largePadding = 24.0;
 
   // SizedBox
   static const double sizedBox = 30.0;
 
   // Border Radius
-  static const double borderRadius = 8.0;
-  static const double buttonRadius = 16.0;
-  static const double cardRadius = 16.0;
+  static const double smallBorderRadius = 4.0;
+  static const double mediumBorderRadius = 8.0;
+  static const double largeBorderRadius = 16.0;
 
   // Icon Sizes
-  static const double icon = 24.0;
+  static const double smallIconSize = 14.0;
+  static const double mediumIconSize = 22.0;
+  static const double largeIconSize = 26.0;
 
   // Button Sizes
   static const double buttonHeight = 48.0;
   static const double buttonWidth = 120.0;
 
   // Text Sizes
-  static const double textSize = 14.0;
+  static const double smallTextSize = 13.0;
+  static const double mediumTextSize = 15.0;
+  static const double largeTextSize = 16.0;
 }

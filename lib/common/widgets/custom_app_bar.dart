@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quora_clone_app/common/models/theme_model.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../constants/size_constants.dart';
 
@@ -10,29 +11,68 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: context.themeColors.themeColor2,
       elevation: 0,
-      toolbarHeight: 80,
-      leading: CircleAvatar(
-        backgroundImage: const AssetImage('assets/images/avatar.png'),
-        backgroundColor: Colors.transparent,
+      toolbarHeight: 60,
+      leadingWidth: 55,
+      backgroundColor: context.themeColors.themeColor1,
+      bottom: PreferredSize(
+        preferredSize: const Size.fromHeight(1),
+        child: Container(
+          color: context.themeColors.themeColor8,
+          height: 1,
+        ),
+      ),
+      leading: Padding(
+        padding: const EdgeInsets.only(
+          left: Sizes.mediumPadding,
+          top: Sizes.smallPadding,
+          bottom: Sizes.smallPadding,
+        ),
+        child: CircleAvatar(
+          backgroundImage: const AssetImage('assets/images/avatar.png'),
+        ),
       ),
       title: Text(
         title,
-        style: const TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
+        style: TextStyle(
           fontSize: 22,
+          fontWeight: FontWeight.bold,
+          color: context.themeColors.themeColor6,
         ),
       ),
       actions: [
-        IconButton(
-          icon: const Icon(Icons.search, color: Colors.white),
-          onPressed: () {},
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: Sizes.smallPadding),
+          child: IconButton(
+            icon: SvgPicture.asset(
+              "assets/icons/search.svg",
+              colorFilter: ColorFilter.mode(
+                context.themeColors.themeColor6,
+                BlendMode.srcIn,
+              ),
+              width: Sizes.mediumIconSize,
+              height: Sizes.mediumIconSize,
+            ),
+            onPressed: () {},
+          ),
         ),
-        IconButton(
-          icon: const Icon(Icons.add, color: Colors.white),
-          onPressed: () {},
+        Padding(
+          padding: const EdgeInsets.only(
+            left: Sizes.smallPadding,
+            right: Sizes.mediumPadding,
+          ),
+          child: IconButton(
+            icon: SvgPicture.asset(
+              "assets/icons/circle-plus.svg",
+              colorFilter: ColorFilter.mode(
+                context.themeColors.themeColor6,
+                BlendMode.srcIn,
+              ),
+              width: Sizes.mediumIconSize,
+              height: Sizes.mediumIconSize,
+            ),
+            onPressed: () {},
+          ),
         ),
       ],
     );

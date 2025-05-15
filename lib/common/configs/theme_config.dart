@@ -10,6 +10,7 @@ class ThemeConfig {
     return baseTheme.copyWith(
       scaffoldBackgroundColor: themeColors.themeColor1,
       textTheme: GoogleFonts.robotoTextTheme(baseTheme.textTheme),
+      iconTheme: IconThemeData(color: themeColors.themeColor6),
       extensions: [
         CustomThemeModel(
           themeColor1: themeColors.themeColor1,
@@ -20,6 +21,7 @@ class ThemeConfig {
           themeColor6: themeColors.themeColor6,
           themeColor7: themeColors.themeColor7,
           themeColor8: themeColors.themeColor8,
+          themeColor9: themeColors.themeColor9,
         ),
       ],
     );

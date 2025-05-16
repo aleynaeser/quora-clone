@@ -1,10 +1,4 @@
-# quora_clone_app
-
-A new Flutter project.
-
-## ‼️ Environment Setup ‼️
-
-### Required Environment Variables
+## ❗️Environment Setup 
 
 Create a `.env` file in the root directory with the following variables:
 

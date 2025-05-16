@@ -4,8 +4,10 @@ import 'ui/main_screen/main_screen.dart';
 import 'common/configs/theme_config.dart';
 import 'common/providers/theme_provider.dart';
 import 'common/constants/base_constants.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+void main() async {
+  await dotenv.load(fileName: ".env");
   runApp(
     ChangeNotifierProvider(
       create: (_) => ThemeProvider(),

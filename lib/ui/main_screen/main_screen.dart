@@ -24,7 +24,6 @@ class MainScreen extends StatelessWidget {
                   if (scrollInfo.metrics.pixels >=
                       scrollInfo.metrics.maxScrollExtent * 0.9) {
                     context.read<PostBloc>().add(PostFetched());
-                    print('scrolled');
                   }
                 }
                 return true;

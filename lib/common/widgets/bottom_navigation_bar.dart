@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../constants/size_constants.dart';
-import '../constants/theme_constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quora_clone_app/common/models/theme_model.dart';
 
@@ -36,12 +35,6 @@ class CustomBottomNavigationBar extends StatelessWidget {
                 'assets/icons/$item',
                 width: Sizes.largeIconSize,
                 height: Sizes.largeIconSize,
-                colorFilter: ColorFilter.mode(
-                  isSelected
-                      ? context.themeColors.themeColor3
-                      : context.themeColors.themeColor6,
-                  BlendMode.srcIn,
-                ),
               ),
             ),
           );
